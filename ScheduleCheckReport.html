@@ -1,0 +1,787 @@
+﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Check Schedule Report</title>
+<style type="text/css">
+*.StyleToggleButton{width: 30px; font-family: 'Courier New'; background-color: Transparent; border: none;overflow: hidden; outline:none; color: black; text-align: center; font-size: 16px; margin: 4px 2px; cursor: pointer;}
+*.StyleTable{width:1200px;}
+*.StyleReportTitle { width:1200px; text-align: center; font-size: medium; background-color: #CCCCCC; }
+*.StyleGroupTitle { width:1200px; text-align: center; background-color: #CCCCCC; }
+*.StyleGroupDate { width:1200px; text-align: center; background-color: #CCCCCC; }
+*.StyleGroupTitleLeft { width:1200px; text-align: left; background-color: #CCCCCC; }
+*.StyleSubGroupTitleName{ width: 50%; font-size: medium; background-color: #EAEAEA;}
+*.StyleSubGroupTitleValue{ width: 50%; font-size: medium; background-color: #EAEAEA;}
+*.StyleTable2Toggle{ width: 3%; font-size: medium; }
+*.StyleTitleProjectProjectID{width: 10%; background-color: #CCFFFF;}
+*.StyleTitleProjectProjectName{width: 40%; background-color: #CCFFFF;}
+*.StyleTitleProjectDatadate{width: 10%; background-color: #CCFFFF;}
+*.StyleTitleProjectTotalTask{width: 10%; background-color: #CCFFFF;}
+*.StyleTitleProjectTotalComplete{width: 10%; background-color: #CCFFFF;}
+*.StyleTitleProjectTotalRelationships{width: 10%; background-color: #CCFFFF;}
+*.StyleProjectProjectID{width: 10%;}
+*.StyleProjectProjectName {width: 40%;}
+*.StyleProjectDatadate{width: 10%;}
+*.StyleProjectTotalTask{width: 10%; padding-right: 20px;}
+*.StyleProjectTotalComplete{width: 10%; padding-right: 20px;}
+*.StyleProjectTotalRelationships{width: 10%; padding-right: 20px;}
+*.StyleTitleSumCheck{width: 24%; background-color: #CCFFFF;}
+*.StyleTitleSumDesc{width: 46%; background-color: #CCFFFF;}
+*.StyleTitleSumTarget{width: 8%; background-color: #CCFFFF;}
+*.StyleTitleSumActual{width: 8%; background-color: #CCFFFF;}
+*.StyleTitleSumFound{width: 8%; background-color: #CCFFFF;}
+*.StyleTitleSumTotal{width: 8%; background-color: #CCFFFF;}
+*.StyleDetailTitle1{width: 35%;}
+*.StyleDetailTitle2{width: 65%;}
+*.StyleSumCheck{width: 24%;}
+*.StyleSumDesc{width: 44%; }
+*.StyleSumTarget{width: 8%; padding-right: 20px;} 
+*.StyleSumActualNA{width: 8%; background-color: #FFFF00; padding-right: 20px;}
+*.StyleSumActualPass{width: 8%; background-color: #00FF00; padding-right: 20px;}
+*.StyleSumActualFail{width: 8%; background-color: #FF0000; padding-right: 20px;}
+*.StyleSumFound{width: 8%; padding-right: 20px;}
+*.StyleSumTotal{width: 8%; padding-right: 20px;}
+*.StyleLogicProjectID_Title{width: 12%;background-color: #CCFFFF; }
+*.StyleLogicTaskCode_Title{width: 12%;background-color: #CCFFFF; }
+*.StyleLogicTaskName_Title{width: 40%;background-color: #CCFFFF; }
+*.StyleLogicState_Title{width: 12%;background-color: #CCFFFF; }
+*.StyleLogicProjectID{width: 12%; }
+*.StyleLogicTaskCode{width: 12%; }
+*.StyleLogicTaskName{width: 40%; }
+*.StyleLogicState{width: 12%; }
+*.StyleLagProjectID_Title{width: 8%;background-color: #CCFFFF;}
+*.StyleLagTaskCode_Title{width: 8%;background-color: #CCFFFF;}
+*.StyleLagTaskName_Title{width: 24%;background-color: #CCFFFF;}
+*.StyleLagPredType_Title{width: 8%;background-color: #CCFFFF;}
+*.StyleLagLag_Title{width: 8%;background-color: #CCFFFF;  }
+*.StyleLagProjectID{width: 8%; }
+*.StyleLagTaskCode{width: 8%; }
+*.StyleLagTaskName{width: 24%; }
+*.StyleLagPredType{width: 8%; }
+*.StyleLagLag{width: 8%; padding-right: 20px;}
+*.StyleOutSeqProjectID_Title{width: 8%;background-color: #CCFFFF; }
+*.StyleOutSeqTaskID_Title{width: 8%;background-color: #CCFFFF; }
+*.StyleOutSeqTaskName_Title{width: 8%;background-color: #CCFFFF; }
+*.StyleOutSeqPredType_Title{width: 8%;background-color: #CCFFFF; }
+*.StyleOutSeqProjectID{width: 8%; }
+*.StyleOutSeqTaskID{width: 8%; }
+*.StyleOutSeqTaskName{width: 8%; }
+*.StyleOutSeqPredType{width: 8%; }
+*.StyleRelSum_Type_Title {width: 20%; background-color: #CCFFFF;}
+*.StyleRelSum_Count_Title {width: 20%; background-color: #CCFFFF; padding-right: 20px;}
+*.StyleRelSum_Percent_Title {width: 20%; background-color: #CCFFFF; padding-right: 20px;}
+*.StyleRelSum_Type {width: 20%;}
+*.StyleRelSum_Count {width: 20%; padding-right: 20px;}
+*.StyleRelSum_Percent {width: 20%; padding-right: 20px;}
+*.StyleConstraintsProjectID_Title{width: 8%;background-color: #CCFFFF;}
+*.StyleConstraintsTaskCode_Title{width: 8%;background-color: #CCFFFF;}
+*.StyleConstraintTaskName_Title{width: 40%;background-color: #CCFFFF;}
+*.StyleConstraintsType_Title{width: 8%;background-color: #CCFFFF;}
+*.StyleConstraintsDate_Title{width: 8%;background-color: #CCFFFF;}
+*.StyleConstraintsType2_Title{width: 8%;background-color: #CCFFFF;}
+*.StyleConstraintsDate2_Title{width: 8%;background-color: #CCFFFF;}
+*.StyleConstraintsProjectID{width: 8%;}
+*.StyleConstraintsTaskCode{width: 8%;}
+*.StyleConstraintTaskName{width: 40%;}
+*.StyleConstraintsType{width: 8%;}
+*.StyleConstraintsDate{width: 8%;}
+*.StyleConstraintsType2{width: 8%;}
+*.StyleConstraintsDate2{width: 8%;}
+*.StyleTaskProjectID_Title{width: 8%;background-color: #CCFFFF;}
+*.StyleTaskTaskCode_Title{width: 8%;background-color: #CCFFFF;}
+*.StyleTaskTaskName_Title{width: 40%;background-color: #CCFFFF;}
+*.StyleTaskOther_Title{width: 8%;background-color: #CCFFFF;}
+*.StyleTaskProjectID{width: 8%;}
+*.StyleTaskTaskCode{width: 8%;}
+*.StyleTaskTaskName{width: 40%;}
+*.StyleTaskOther{width: 8%;}
+*.StyleTaskOtherNumber{width: 8%; padding-right: 20px;}
+*.StylePrgBDDProjectID_Title{width: 8%;background-color: #CCFFFF;}
+*.StylePrgBDDTaskCode_Title{width: 8%;background-color: #CCFFFF;}
+*.StylePrgBDDTaskName_Title{width: 40%;background-color: #CCFFFF;}
+*.StylePrgBDDDataDate_Title{width: 8%;background-color: #CCFFFF;}
+*.StylePrgBDDStartDate_Title{width: 8%;background-color: #CCFFFF;}
+*.StylePrgBDDFinishDate_Title{width: 8%;background-color: #CCFFFF;}
+*.StylePrgBDDRemainEarlyStartDate_Title{width: 8%;background-color: #CCFFFF;}
+*.StylePrgBDDRemainEarlyFinishDate_Title{width: 8%;background-color: #CCFFFF;}
+*.StylePrgBDDProjectID{width: 8%;}
+*.StylePrgBDDTaskCode{width: 8%;}
+*.StylePrgBDDTaskName{width: 40%;}
+*.StylePrgBDDDataDate{width: 8%;}
+*.StylePrgBDDStartDate{width: 8%;}
+*.StylePrgBDDFinishDate{width: 8%;}
+*.StylePrgBDDRemainEarlyStartDate{width: 8%;}
+*.StylePrgBDDRemainEarlyFinishDate{width: 8%;}
+</style>
+<script language='JavaScript'>
+	function Toggle( toggleId, tableId )
+	{
+	    var tableEl = document.getElementById(tableId);
+	    var toggleEl = document.getElementById(toggleId);
+	    if (tableEl.style.display == 'none')
+	    {
+              tableEl.style.display = 'block';
+              toggleEl.innerText ='▼';
+	    }
+	    else
+	    {
+              tableEl.style.display = 'none';
+              toggleEl.innerText = '▶';
+	    }
+	}
+	</script>
+</head>
+<body>
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="center" class="StyleReportTitle" >Check Schedule Report</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="center" class="StyleGroupDate" >10-Jun-25</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="center" class="StyleGroupTitle" >PM.EXE</td>
+</tr>
+</table>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId1" OnClick="Toggle('BId1','TId1')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Projects Checked</td>
+<td align="left" class="StyleDetailTitle2" ></td>
+</tr>
+</table>
+<div id ="TId1" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTitleProjectProjectID" >Project ID</td>
+<td align="left" class="StyleTitleProjectProjectName" >Project Name</td>
+<td align="left" class="StyleTitleProjectDatadate" >Data Date</td>
+<td align="left" class="StyleTitleProjectTotalTask" >Total Activities</td>
+<td align="left" class="StyleTitleProjectTotalComplete" >Complete Activities</td>
+<td align="left" class="StyleTitleProjectTotalRelationships" >Internal Relationships</td>
+<td align="left" class="StyleTitleProjectTotalRelationships" >External Relationships</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleProjectProjectID" >EC001-1</td>
+<td align="left" class="StyleProjectProjectName" >Office Building Addition</td>
+<td align="left" class="StyleProjectDatadate" >24-May-25</td>
+<td align="right" class="StyleProjectTotalTask" >22</td>
+<td align="right" class="StyleProjectTotalComplete" >1</td>
+<td align="right" class="StyleProjectTotalRelationships" >25</td>
+<td align="right" class="StyleProjectTotalRelationships" >0</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId2" OnClick="Toggle('BId2','TId2')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Project checked to have links to the following closed projects</td>
+<td align="left" class="StyleDetailTitle2" ></td>
+</tr>
+</table>
+<div id ="TId2" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTitleProjectProjectID" >Closed Project ID</td>
+<td align="left" class="StyleTitleProjectProjectName" >Closed Project Name</td>
+<td align="left" class="StyleTitleProjectDatadate" >Data Date</td>
+<td align="left" class="StyleTitleProjectTotalTask" >Links to/from the closed project</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId3" OnClick="Toggle('BId3','TId3')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Check Summary</td>
+<td align="left" class="StyleDetailTitle2" ></td>
+</tr>
+</table>
+<div id ="TId3" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTitleSumCheck" >Check</td>
+<td align="left" class="StyleTitleSumDesc" >Description</td>
+<td align="left" class="StyleTitleSumTarget" >Target</td>
+<td align="left" class="StyleTitleSumActual" >Percent</td>
+<td align="left" class="StyleTitleSumFound" >Found</td>
+<td align="left" class="StyleTitleSumTotal" >Total</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Logic</td>
+<td align="left" class="StyleSumDesc" >Activities missing predecessors or successors</td>
+<td align="right" class="StyleSumTarget" >&lt; 5.00 %</td>
+<td align="right" class="StyleSumActualPass" >4.76 %</td>
+<td align="right" class="StyleSumFound" >1</td>
+<td align="right" class="StyleSumTotal" >21</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Negative Lags</td>
+<td align="left" class="StyleSumDesc" >Relationships with a lag duration of less than 0</td>
+<td align="right" class="StyleSumTarget" >&lt; 1.00 %</td>
+<td align="right" class="StyleSumActualPass" >0.00 %</td>
+<td align="right" class="StyleSumFound" >0</td>
+<td align="right" class="StyleSumTotal" >25</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Positive Lags</td>
+<td align="left" class="StyleSumDesc" >Relationships with a positive lag duration</td>
+<td align="right" class="StyleSumTarget" >&lt; 5.00 %</td>
+<td align="right" class="StyleSumActualFail" >8.00 %</td>
+<td align="right" class="StyleSumFound" >2</td>
+<td align="right" class="StyleSumTotal" >25</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Long Lags</td>
+<td align="left" class="StyleSumDesc" >Relationships with a lag duration greater than 352 hours</td>
+<td align="right" class="StyleSumTarget" >&lt; 5.00 %</td>
+<td align="right" class="StyleSumActualPass" >0.00 %</td>
+<td align="right" class="StyleSumFound" >0</td>
+<td align="right" class="StyleSumTotal" >25</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Relationship Type</td>
+<td align="left" class="StyleSumDesc" >The majority of relationships should be Finish to Start</td>
+<td align="right" class="StyleSumTarget" >&gt; 90.00 %</td>
+<td align="right" class="StyleSumActualPass" >92.00 %</td>
+<td align="right" class="StyleSumFound" >23</td>
+<td align="right" class="StyleSumTotal" >25</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Hard Constraints</td>
+<td align="left" class="StyleSumDesc" >Constraints that prevent activities being moved</td>
+<td align="right" class="StyleSumTarget" >&lt; 1.00 %</td>
+<td align="right" class="StyleSumActualPass" >0.00 %</td>
+<td align="right" class="StyleSumFound" >0</td>
+<td align="right" class="StyleSumTotal" >21</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Soft Constraints</td>
+<td align="left" class="StyleSumDesc" >Constraints that do not prevent activities being moved</td>
+<td align="right" class="StyleSumTarget" >&lt; 5.00 %</td>
+<td align="right" class="StyleSumActualPass" >0.00 %</td>
+<td align="right" class="StyleSumFound" >0</td>
+<td align="right" class="StyleSumTotal" >21</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Large Float</td>
+<td align="left" class="StyleSumDesc" >Activities with total float greater than 352 hours</td>
+<td align="right" class="StyleSumTarget" >&lt; 1.00 %</td>
+<td align="right" class="StyleSumActualFail" >4.76 %</td>
+<td align="right" class="StyleSumFound" >1</td>
+<td align="right" class="StyleSumTotal" >21</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Negative Float</td>
+<td align="left" class="StyleSumDesc" >Activities with a total float less than 0</td>
+<td align="right" class="StyleSumTarget" >&lt; 1.00 %</td>
+<td align="right" class="StyleSumActualPass" >0.00 %</td>
+<td align="right" class="StyleSumFound" >0</td>
+<td align="right" class="StyleSumTotal" >21</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Large Durations</td>
+<td align="left" class="StyleSumDesc" >Activities that have a remaining duration greater than 352 hours</td>
+<td align="right" class="StyleSumTarget" >&lt; 5.00 %</td>
+<td align="right" class="StyleSumActualFail" >19.05 %</td>
+<td align="right" class="StyleSumFound" >4</td>
+<td align="right" class="StyleSumTotal" >21</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Invalid Progress Before Data Date</td>
+<td align="left" class="StyleSumDesc" >Incomplete activities before the data date</td>
+<td align="right" class="StyleSumTarget" >&lt; 1.00 %</td>
+<td align="right" class="StyleSumActualPass" >0.00 %</td>
+<td align="right" class="StyleSumFound" >0</td>
+<td align="right" class="StyleSumTotal" >21</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Invalid Progress After Data Date</td>
+<td align="left" class="StyleSumDesc" >Activities with actual dates after the data date</td>
+<td align="right" class="StyleSumTarget" >&lt; 1.00 %</td>
+<td align="right" class="StyleSumActualPass" >0.00 %</td>
+<td align="right" class="StyleSumFound" >0</td>
+<td align="right" class="StyleSumTotal" >21</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Resources/Cost</td>
+<td align="left" class="StyleSumDesc" >Activities that do not have an expense or a resource assigned</td>
+<td align="right" class="StyleSumTarget" >&lt; 1.00 %</td>
+<td align="right" class="StyleSumActualFail" >13.64 %</td>
+<td align="right" class="StyleSumFound" >3</td>
+<td align="right" class="StyleSumTotal" >22</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Late Activities</td>
+<td align="left" class="StyleSumDesc" >Activities scheduled to finish later than the project baseline</td>
+<td align="right" class="StyleSumTarget" >&lt; 5.00 %</td>
+<td align="right" class="StyleSumActualPass" >0.00 %</td>
+<td align="right" class="StyleSumFound" >0</td>
+<td align="right" class="StyleSumTotal" >21</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >Out of Sequence</td>
+<td align="left" class="StyleSumDesc" >Activities which are completed or in-progress before their predecessors.</td>
+<td align="right" class="StyleSumTarget" >&lt; 2.00 %</td>
+<td align="right" class="StyleSumActualPass" >0.00 %</td>
+<td align="right" class="StyleSumFound" >0</td>
+<td align="right" class="StyleSumTotal" >22</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleTitleSumCheck" >Check</td>
+<td align="left" class="StyleTitleSumDesc" >Description</td>
+<td align="left" class="StyleTitleSumTarget" >Target</td>
+<td align="left" class="StyleTitleSumActual" >BEI Ratio</td>
+<td align="left" class="StyleTitleSumFound" >Project Activities</td>
+<td align="left" class="StyleTitleSumTotal" >Baseline Activities</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleSumCheck" >BEI</td>
+<td align="left" class="StyleSumDesc" >Baseline Execution Index</td>
+<td align="right" class="StyleSumTarget" >&gt; 0.95 </td>
+<td align="right" class="StyleSumActualFail" >0.05 </td>
+<td align="right" class="StyleSumFound" >1</td>
+<td align="right" class="StyleSumTotal" >22</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId4" OnClick="Toggle('BId4','TId4')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Logic</td>
+<td align="left" class="StyleDetailTitle2" >Activities missing predecessors or successors</td>
+</tr>
+</table>
+<div id ="TId4" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleLogicProjectID_Title" >Project ID</td>
+<td align="left" class="StyleLogicTaskCode_Title" >Activity ID</td>
+<td align="left" class="StyleLogicTaskName_Title" >Activity Name</td>
+<td align="left" class="StyleLogicState_Title" >Predecessor</td>
+<td align="left" class="StyleLogicState_Title" >Successor</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleLogicProjectID" >EC001-1</td>
+<td align="left" class="StyleLogicTaskCode" >A1010</td>
+<td align="left" class="StyleLogicTaskName" >Building Addition Complete</td>
+<td align="left" class="StyleLogicState" >Yes</td>
+<td align="left" class="StyleLogicState" >No</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId5" OnClick="Toggle('BId5','TId5')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Negative Lags</td>
+<td align="left" class="StyleDetailTitle2" >Relationships with a lag duration of less than 0</td>
+</tr>
+</table>
+<div id ="TId5" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleLagProjectID_Title" >Predecessor Project ID</td>
+<td align="left" class="StyleLagTaskCode_Title" >Predecessor Activity ID</td>
+<td align="left" class="StyleLagTaskName_Title" >Predecessor Activity Name</td>
+<td align="left" class="StyleLagPredType_Title" >Relationship Type</td>
+<td align="left" class="StyleLagLag_Title" >Lag Duration (hours)</td>
+<td align="left" class="StyleLagProjectID_Title" >Successor Project ID</td>
+<td align="left" class="StyleLagTaskCode_Title" >Successor Activity ID</td>
+<td align="left" class="StyleLagTaskName_Title" >Successor Activity Name</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId6" OnClick="Toggle('BId6','TId6')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Positive Lags</td>
+<td align="left" class="StyleDetailTitle2" >Relationships with a positive lag duration</td>
+</tr>
+</table>
+<div id ="TId6" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleLagProjectID_Title" >Predecessor Project ID</td>
+<td align="left" class="StyleLagTaskCode_Title" >Predecessor Activity ID</td>
+<td align="left" class="StyleLagTaskName_Title" >Predecessor Activity Name</td>
+<td align="left" class="StyleLagPredType_Title" >Relationship Type</td>
+<td align="left" class="StyleLagLag_Title" >Lag Duration (hours)</td>
+<td align="left" class="StyleLagProjectID_Title" >Successor Project ID</td>
+<td align="left" class="StyleLagTaskCode_Title" >Successor Activity ID</td>
+<td align="left" class="StyleLagTaskName_Title" >Successor Activity Name</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleLagProjectID" >EC001-1</td>
+<td align="left" class="StyleLagTaskCode" >A1100</td>
+<td align="left" class="StyleLagTaskName" >Install Doors and Window Frames</td>
+<td align="center" class="StyleLagPredType" >SS</td>
+<td align="right" class="StyleLagLag" >50.00</td>
+<td align="left" class="StyleLagProjectID" >EC001-1</td>
+<td align="left" class="StyleLagTaskCode" >A1110</td>
+<td align="left" class="StyleLagTaskName" >Install Exterior Doors and Windows</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleLagProjectID" >EC001-1</td>
+<td align="left" class="StyleLagTaskCode" >A1120</td>
+<td align="left" class="StyleLagTaskName" >Drywall in Offices</td>
+<td align="center" class="StyleLagPredType" >SS</td>
+<td align="right" class="StyleLagLag" >70.00</td>
+<td align="left" class="StyleLagProjectID" >EC001-1</td>
+<td align="left" class="StyleLagTaskCode" >A1210</td>
+<td align="left" class="StyleLagTaskName" >Paint Building Interior</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId7" OnClick="Toggle('BId7','TId7')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Long Lags</td>
+<td align="left" class="StyleDetailTitle2" >Relationships with a lag duration greater than 352 hours</td>
+</tr>
+</table>
+<div id ="TId7" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleLagProjectID_Title" >Predecessor Project ID</td>
+<td align="left" class="StyleLagTaskCode_Title" >Predecessor Activity ID</td>
+<td align="left" class="StyleLagTaskName_Title" >Predecessor Activity Name</td>
+<td align="left" class="StyleLagPredType_Title" >Relationship Type</td>
+<td align="left" class="StyleLagLag_Title" >Lag Duration (hours)</td>
+<td align="left" class="StyleLagProjectID_Title" >Successor Project ID</td>
+<td align="left" class="StyleLagTaskCode_Title" >Successor Activity ID</td>
+<td align="left" class="StyleLagTaskName_Title" >Successor Activity Name</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId8" OnClick="Toggle('BId8','TId8')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Relationship Type</td>
+<td align="left" class="StyleDetailTitle2" >The majority of relationships should be Finish to Start</td>
+</tr>
+</table>
+<div id ="TId8" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleRelSum_Type_Title" >Relationship Type</td>
+<td align="right" class="StyleRelSum_Count_Title" >Count</td>
+<td align="right" class="StyleRelSum_Percent_Title" >Percent</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleRelSum_Type" >FS</td>
+<td align="right" class="StyleRelSum_Count" >23</td>
+<td align="right" class="StyleRelSum_Percent" >92.00 %</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleRelSum_Type" >FF</td>
+<td align="right" class="StyleRelSum_Count" >0</td>
+<td align="right" class="StyleRelSum_Percent" >0.00 %</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleRelSum_Type" >SS</td>
+<td align="right" class="StyleRelSum_Count" >2</td>
+<td align="right" class="StyleRelSum_Percent" >8.00 %</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleRelSum_Type" >SF</td>
+<td align="right" class="StyleRelSum_Count" >0</td>
+<td align="right" class="StyleRelSum_Percent" >0.00 %</td>
+</tr>
+</table>
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleLagProjectID_Title" >Predecessor Project ID</td>
+<td align="left" class="StyleLagTaskCode_Title" >Predecessor Activity ID</td>
+<td align="left" class="StyleLagTaskName_Title" >Predecessor Activity Name</td>
+<td align="left" class="StyleLagPredType_Title" >Relationship Type</td>
+<td align="left" class="StyleLagLag_Title" >Lag Duration (hours)</td>
+<td align="left" class="StyleLagProjectID_Title" >Successor Project ID</td>
+<td align="left" class="StyleLagTaskCode_Title" >Successor Activity ID</td>
+<td align="left" class="StyleLagTaskName_Title" >Successor Activity Name</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleLagProjectID" >EC001-1</td>
+<td align="left" class="StyleLagTaskCode" >A1100</td>
+<td align="left" class="StyleLagTaskName" >Install Doors and Window Frames</td>
+<td align="center" class="StyleLagPredType" >SS</td>
+<td align="right" class="StyleLagLag" >50.00</td>
+<td align="left" class="StyleLagProjectID" >EC001-1</td>
+<td align="left" class="StyleLagTaskCode" >A1110</td>
+<td align="left" class="StyleLagTaskName" >Install Exterior Doors and Windows</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleLagProjectID" >EC001-1</td>
+<td align="left" class="StyleLagTaskCode" >A1120</td>
+<td align="left" class="StyleLagTaskName" >Drywall in Offices</td>
+<td align="center" class="StyleLagPredType" >SS</td>
+<td align="right" class="StyleLagLag" >70.00</td>
+<td align="left" class="StyleLagProjectID" >EC001-1</td>
+<td align="left" class="StyleLagTaskCode" >A1210</td>
+<td align="left" class="StyleLagTaskName" >Paint Building Interior</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId9" OnClick="Toggle('BId9','TId9')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Hard Constraints</td>
+<td align="left" class="StyleDetailTitle2" >Constraints that prevent activities being moved</td>
+</tr>
+</table>
+<div id ="TId9" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleConstraintsProjectID_Title" >Project ID</td>
+<td align="left" class="StyleConstraintsTaskCode_Title" >Activity ID</td>
+<td align="left" class="StyleConstraintTaskName_Title" >Activity Name</td>
+<td align="left" class="StyleConstraintsType_Title" >Primary Constraint</td>
+<td align="left" class="StyleConstraintsDate_Title" >Primary Constraint Date</td>
+<td align="left" class="StyleConstraintsType2_Title" >Secondary Constraint</td>
+<td align="left" class="StyleConstraintsDate2_Title" >Secondary Constraint Date</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId10" OnClick="Toggle('BId10','TId10')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Soft Constraints</td>
+<td align="left" class="StyleDetailTitle2" >Constraints that do not prevent activities being moved</td>
+</tr>
+</table>
+<div id ="TId10" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleConstraintsProjectID_Title" >Project ID</td>
+<td align="left" class="StyleConstraintsTaskCode_Title" >Activity ID</td>
+<td align="left" class="StyleConstraintTaskName_Title" >Activity Name</td>
+<td align="left" class="StyleConstraintsType_Title" >Primary Constraint</td>
+<td align="left" class="StyleConstraintsDate_Title" >Primary Constraint Date</td>
+<td align="left" class="StyleConstraintsType2_Title" >Secondary Constraint</td>
+<td align="left" class="StyleConstraintsDate2_Title" >Secondary Constraint Date</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId11" OnClick="Toggle('BId11','TId11')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Large Float</td>
+<td align="left" class="StyleDetailTitle2" >Activities with total float greater than 352 hours</td>
+</tr>
+</table>
+<div id ="TId11" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTaskProjectID_Title" >Project ID</td>
+<td align="left" class="StyleTaskTaskCode_Title" >Activity ID</td>
+<td align="left" class="StyleTaskTaskName_Title" >Activity Name</td>
+<td align="left" class="StyleTaskOther_Title" >Total Float (hour)</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleTaskProjectID" >EC001-1</td>
+<td align="left" class="StyleTaskTaskCode" >A1210</td>
+<td align="left" class="StyleTaskTaskName" >Paint Building Interior</td>
+<td align="right" class="StyleTaskOtherNumber" >560.00 </td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId12" OnClick="Toggle('BId12','TId12')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Negative Float</td>
+<td align="left" class="StyleDetailTitle2" >Activities with a total float less than 0</td>
+</tr>
+</table>
+<div id ="TId12" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTaskProjectID_Title" >Project ID</td>
+<td align="left" class="StyleTaskTaskCode_Title" >Activity ID</td>
+<td align="left" class="StyleTaskTaskName_Title" >Activity Name</td>
+<td align="left" class="StyleTaskOther_Title" >Total Float (hour)</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId13" OnClick="Toggle('BId13','TId13')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Large Durations</td>
+<td align="left" class="StyleDetailTitle2" >Activities that have a remaining duration greater than 352 hours</td>
+</tr>
+</table>
+<div id ="TId13" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTaskProjectID_Title" >Project ID</td>
+<td align="left" class="StyleTaskTaskCode_Title" >Activity ID</td>
+<td align="left" class="StyleTaskTaskName_Title" >Activity Name</td>
+<td align="left" class="StyleTaskOther_Title" >Remaining Duration (hour)</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleTaskProjectID" >EC001-1</td>
+<td align="left" class="StyleTaskTaskCode" >A1040</td>
+<td align="left" class="StyleTaskTaskName" >Excavation &amp; Formwork</td>
+<td align="right" class="StyleTaskOtherNumber" >630.00 </td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleTaskProjectID" >EC001-1</td>
+<td align="left" class="StyleTaskTaskCode" >A1060</td>
+<td align="left" class="StyleTaskTaskName" >Erect Structural Frame</td>
+<td align="right" class="StyleTaskOtherNumber" >360.00 </td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleTaskProjectID" >EC001-1</td>
+<td align="left" class="StyleTaskTaskCode" >A1080</td>
+<td align="left" class="StyleTaskTaskName" >Concrete First &amp; Second Floors</td>
+<td align="right" class="StyleTaskOtherNumber" >540.00 </td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleTaskProjectID" >EC001-1</td>
+<td align="left" class="StyleTaskTaskCode" >A1170</td>
+<td align="left" class="StyleTaskTaskName" >Fabricate and Deliver Flooring</td>
+<td align="right" class="StyleTaskOtherNumber" >2090.00 </td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId14" OnClick="Toggle('BId14','TId14')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Invalid Progress Before Data Date</td>
+<td align="left" class="StyleDetailTitle2" >Incomplete activities before the data date</td>
+</tr>
+</table>
+<div id ="TId14" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StylePrgBDDProjectID_Title" >Project ID</td>
+<td align="left" class="StylePrgBDDTaskCode_Title" >Activity ID</td>
+<td align="left" class="StylePrgBDDTaskName_Title" >Activity Name</td>
+<td align="left" class="StylePrgBDDDataDate_Title" >Data Date</td>
+<td align="left" class="StylePrgBDDStartDate_Title" >Start</td>
+<td align="left" class="StylePrgBDDFinishDate_Title" >Finish</td>
+<td align="left" class="StylePrgBDDRemainEarlyStartDate_Title" >Remaining Early Start</td>
+<td align="left" class="StylePrgBDDRemainEarlyFinishDate_Title" >Remaining Early Finish</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId15" OnClick="Toggle('BId15','TId15')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Invalid Progress After Data Date</td>
+<td align="left" class="StyleDetailTitle2" >Activities with actual dates after the data date</td>
+</tr>
+</table>
+<div id ="TId15" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StylePrgBDDProjectID_Title" >Project ID</td>
+<td align="left" class="StylePrgBDDTaskCode_Title" >Activity ID</td>
+<td align="left" class="StylePrgBDDTaskName_Title" >Activity Name</td>
+<td align="left" class="StylePrgBDDDataDate_Title" >Data Date</td>
+<td align="left" class="StylePrgBDDStartDate_Title" >Actual Start</td>
+<td align="left" class="StylePrgBDDFinishDate_Title" >Actual Finish</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId16" OnClick="Toggle('BId16','TId16')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Resources/Cost</td>
+<td align="left" class="StyleDetailTitle2" >Activities that do not have an expense or a resource assigned</td>
+</tr>
+</table>
+<div id ="TId16" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTaskProjectID_Title" >Project ID</td>
+<td align="left" class="StyleTaskTaskCode_Title" >Activity ID</td>
+<td align="left" class="StyleTaskTaskName_Title" >Activity Name</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleTaskProjectID" >EC001-1</td>
+<td align="left" class="StyleTaskTaskCode" >A1000</td>
+<td align="left" class="StyleTaskTaskName" >Contract Award</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleTaskProjectID" >EC001-1</td>
+<td align="left" class="StyleTaskTaskCode" >A1010</td>
+<td align="left" class="StyleTaskTaskName" >Building Addition Complete</td>
+</tr>
+<tr style="width: 1200px" >
+<td align="left" class="StyleTaskProjectID" >EC001-1</td>
+<td align="left" class="StyleTaskTaskCode" >A1170</td>
+<td align="left" class="StyleTaskTaskName" >Fabricate and Deliver Flooring</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId17" OnClick="Toggle('BId17','TId17')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Late Activities</td>
+<td align="left" class="StyleDetailTitle2" >Activities scheduled to finish later than the project baseline</td>
+</tr>
+</table>
+<div id ="TId17" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTaskProjectID_Title" >Project ID</td>
+<td align="left" class="StyleTaskTaskCode_Title" >Activity ID</td>
+<td align="left" class="StyleTaskTaskName_Title" >Activity Name</td>
+<td align="left" class="StyleTaskOther_Title" >Finish Variance (hour)</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId18" OnClick="Toggle('BId18','TId18')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Baseline</td>
+<td align="left" class="StyleDetailTitle2" >Activities missing in assigned baseline</td>
+</tr>
+</table>
+<div id ="TId18" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTaskProjectID_Title" >Project ID</td>
+<td align="left" class="StyleTaskTaskCode_Title" >Activity ID</td>
+<td align="left" class="StyleTaskTaskName_Title" >Activity Name</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId19" OnClick="Toggle('BId19','TId19')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Links to Closed Projects</td>
+<td align="left" class="StyleDetailTitle2" >Activities with links to closed projects. *= Closed Project</td>
+</tr>
+</table>
+<div id ="TId19" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleLagProjectID_Title" >Predecessor Project ID</td>
+<td align="left" class="StyleLagTaskCode_Title" >Predecessor Activity ID</td>
+<td align="left" class="StyleLagTaskName_Title" >Predecessor Activity Name</td>
+<td align="left" class="StyleLagPredType_Title" >Relationship Type</td>
+<td align="left" class="StyleLagLag_Title" >Lag Duration (hours)</td>
+<td align="left" class="StyleLagProjectID_Title" >Successor Project ID</td>
+<td align="left" class="StyleLagTaskCode_Title" >Successor Activity ID</td>
+<td align="left" class="StyleLagTaskName_Title" >Successor Activity Name</td>
+</tr>
+</table>
+</div>
+<table align="left" class="StyleGroupTitleLeft" >
+<tr style="width: 1200px" >
+<td align="left" class="StyleTable2Toggle" ><button  tabindex='0' id="BId20" OnClick="Toggle('BId20','TId20')" class="StyleToggleButton";>▼</button></td>
+<td align="left" class="StyleDetailTitle1" >Out of Sequence</td>
+<td align="left" class="StyleDetailTitle2" >Activities which are completed or in-progress before their predecessors.</td>
+</tr>
+</table>
+<div id ="TId20" ; style="width: 1200px;">
+<table class="StyleTable" >
+<tr style="width: 1200px" >
+<td align="left" class=StyleOutSeqProjectID_Title>Project ID</td>
+<td align="left" class=StyleOutSeqTaskID_Title>Activity ID</td>
+<td align="left" class=StyleOutSeqTaskID_Title>Activity Name</td>
+<td align="left" class=StyleOutSeqProjectID_Title>Predecessor Project ID</td>
+<td align="left" class=StyleOutSeqTaskID_Title>Predecessor Activity ID</td>
+<td align="left" class=StyleOutSeqTaskName_Title>Predecessor Activity Name</td>
+<td align="left" class=StyleOutSeqPredType_Title>Relationship Type</td>
+</tr>
+</table>
+</div>
+</body>
+</html>
